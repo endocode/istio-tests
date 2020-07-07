@@ -1,4 +1,3 @@
-root@instance-1:~# cat locustfile.py 
 #!/usr/bin/python
 #
 # Copyright 2018 Google LLC
