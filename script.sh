@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./scripts/env.sh
+
 ./scripts/1-create-gke-clusters.sh
 
 CLUSTER_READY=$(gcloud container clusters list | grep RUNNING | wc -l)
@@ -11,7 +13,7 @@ done
 
 ./scripts/2-install-istio.sh
 
-export PATH="$PATH:/egym/istio-samples/multicluster-gke/dual-control-plane/istio-1.4.2/bin"
+export PATH="$PATH:istio-1.4.2/bin/"
 
 ./scripts/3-configure-dns.sh
 sleep 90
