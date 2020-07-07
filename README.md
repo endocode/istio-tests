@@ -6,8 +6,8 @@ be deployed.
 
 ## Configure your projects:
 ```
-sed 's/PROJECTA/my-istio-project-1/` scripts/env.sh -i
-sed 's/PROJECTB/my-istio-project-2/` scripts/env.sh -i
+sed 's/PROJECTA/my-istio-project-1/' scripts/env.sh -i
+sed 's/PROJECTB/my-istio-project-2/' scripts/env.sh -i
 ```
 
 ## Deploy the clusters (ignore the warnings):
