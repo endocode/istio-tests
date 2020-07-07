@@ -1,4 +1,4 @@
-# Microservice high-load test
+# Microservices high-load test
 
 ## Prerequisites: 
 You will need an account in GCP and two projects in which the GKE clusters will
@@ -65,9 +65,13 @@ Errors should start > 100 RPS.
 ./scripts/cleanup-delete-clusters.sh
 ```
 
-NOTE: Don't forget to manually destroy the VM used for the load tests if you
-created one!
+**NOTE: Don't forget to manually destroy the VM used for the load tests if you
+created one!**
 
+
+
+
+---
 ---
 
 # Demo: Multicluster Istio - Gateway-Connected Clusters
