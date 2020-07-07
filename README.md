@@ -15,11 +15,6 @@ sed 's/PROJECTB/my-istio-project-2/' scripts/env.sh -i
 ./script.sh
 ```
 
-## Configure your environment:
-```
-source ./scripts/env.sh
-```
-
 ## Verify HPA is correct in both clusters:
 ```
 kubectl config use-context gke_${PROJECT_1}_europe-west1-b_${PREFIX}-dual-cluster1
