@@ -18,8 +18,8 @@ log() { echo "$1" >&2; }
 
 ZONE="europe-west1-b"
 
-export PROJECT_1=jorge-istio-test-001
-export PROJECT_2=jorge-istio-test-002
+export PROJECT_1=PROJECTA
+export PROJECT_2=PROJECTB
 
 ISTIO_VERSION=${ISTIO_VERSION:=1.4.2}
 NODE_TYPE="n1-standard-4"
