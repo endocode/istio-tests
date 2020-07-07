@@ -1,3 +1,75 @@
+# Microservice high-load test
+
+## Prerequisites: 
+You will need an account in GCP and two projects in which the GKE clusters will
+be deployed. 
+
+## Configure your projects:
+```
+sed 's/PROJECTA/my-istio-project-1/` scripts/env.sh -i
+sed 's/PROJECTB/my-istio-project-2/` scripts/env.sh -i
+```
+
+## Deploy the clusters (ignore the warnings):
+```
+./script.sh
+```
+
+## Configure your environment:
+```
+source ./scripts/env.sh
+```
+
+## Verify HPA is correct in both clusters:
+```
+kubectl config use-context gke_${PROJECT_1}_europe-west1-b_${PREFIX}-dual-cluster1
+kubectl get -n hipster1 hpa
+kubectl config use-context gke_${PROJECT_2}_europe-west1-b_${PREFIX}-dual-cluster2
+kubectl get -n hipster2 hpa
+```
+
+## Get the IP of the frontend:
+```
+kubectl config use-context gke_${PROJECT_2}_europe-west1-b_${PREFIX}-dual-cluster2
+kubectl get svc -n istio-system istio-ingressgateway
+34.78.211.40
+```
+
+## Prepare load-test machine
+Create a VM or run in your computer (VM has to have bigger disk than standard
+10GB).
+
+## Install locust:
+```
+sudo apt-get update && sudo apt-get install -y python3 python3-pip wget
+pip3 install locust
+```
+
+## Downloda the locust file that works with the latest locust:
+```
+wget -c https://raw.githubusercontent.com/endocode/istio-tests/master/locustfile.py
+```
+
+## Configure and run locust:
+```
+FRONTEND_ADDR=34.78.211.40
+USERS=5000
+TIME=5m
+.local/bin/locust --headless -H http://${FRONTEND_ADDR} -u ${USERS} -r 50 -t ${TIME}
+```
+
+Errors should start > 100 RPS.
+
+## Destroy the clusters:
+```
+./scripts/cleanup-delete-clusters.sh
+```
+
+NOTE: Don't forget to manually destroy the VM used for the load tests if you
+created one!
+
+---
+
 # Demo: Multicluster Istio - Gateway-Connected Clusters
 
 This example shows how to orchestrate an application with [Istio](https://istio.io/) across two different
