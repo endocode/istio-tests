@@ -55,7 +55,7 @@ TIME=5m
 .local/bin/locust --headless -H http://${FRONTEND_ADDR} -u ${USERS} -r 50 -t ${TIME}
 ```
 
-Errors should start > 100 RPS.
+~Errors should start > 100 RPS~.
 
 ## Destroy the clusters:
 ```
