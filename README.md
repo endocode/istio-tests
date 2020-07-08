@@ -40,13 +40,14 @@ sudo apt-get update && sudo apt-get install -y python3 python3-pip wget
 pip3 install locust
 ```
 
-## Downloda the locust file that works with the latest locust:
+## Downlod the locust file that works with the latest locust:
 ```
 wget -c https://raw.githubusercontent.com/endocode/istio-tests/master/locustfile.py
 ```
 
-## Configure and run locust:
+## Configure the system and run locust:
 ```
+ulimit -n 65535
 FRONTEND_ADDR=34.78.211.40
 USERS=5000
 TIME=5m
