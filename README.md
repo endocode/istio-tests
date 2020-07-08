@@ -31,8 +31,8 @@ kubectl get svc -n istio-system istio-ingressgateway
 ```
 
 ## Prepare load-test machine
-Create a VM or run in your computer (VM has to have bigger disk than standard
-10GB).
+Create a VM or run in your computer if you have enough bandwidth (choose a decent
+machine and disk, e.g. n1-standard-4, 100GB).
 
 ## Install locust:
 ```
