@@ -13,6 +13,7 @@ sed 's/PROJECTB/my-istio-project-2/' scripts/env.sh -i
 ## Deploy the clusters (ignore the warnings):
 ```
 ./script.sh
+./scripts/env.sh
 ```
 
 ## Verify HPA is correct in both clusters:
